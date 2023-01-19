@@ -30,4 +30,17 @@ function operate(a, b, c){
     }
 }
 
+const screen = document.querySelector(".screen")
 
+const numbers = document.querySelectorAll(".numbers");
+let sum = "";
+Array.from(numbers).forEach(number => {// make an array from the number buttons
+    number.addEventListener("click", () => {//add a click event to all the buttons from the array
+        if(screen.textContent === "0"){ 
+            screen.textContent = "";//to remove the zero from the screen 
+            screen.textContent += number.value//then concatenate the numbers together
+        }else{
+            screen.textContent += number.value
+        }
+    });
+});

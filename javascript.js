@@ -44,3 +44,11 @@ Array.from(numbers).forEach(number => {// make an array from the number buttons
         }
     });
 });
+
+const clear = document.querySelector(".clear")
+clear.addEventListener("click", () => screen.textContent = 0);
+
+const negative = document.querySelector(".negative")
+negative.addEventListener("click", () => screen.textContent = screen.textContent * -1);
+
+

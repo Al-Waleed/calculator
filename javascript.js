@@ -14,9 +14,6 @@ function divide (a, b){
     return a / b;
 }
 
-function percentage (a){
-    return a / 100;
-}
 
 function operate(a, b, c){
     if(c === "+"){
@@ -51,4 +48,5 @@ clear.addEventListener("click", () => screen.textContent = 0);
 const negative = document.querySelector(".negative")
 negative.addEventListener("click", () => screen.textContent = screen.textContent * -1);
 
-
+const percentage = document.querySelector(".percentage")
+percentage.addEventListener("click", () => screen.textContent = screen.textContent / 100);

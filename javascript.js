@@ -27,6 +27,7 @@ function operate(a, b, c){
     }
 }
 
+let displayValue = 0;
 const screen = document.querySelector(".screen")
 
 const numbers = document.querySelectorAll(".numbers");
@@ -36,25 +37,38 @@ Array.from(numbers).forEach(number => {// make an array from the number buttons
         if(screen.textContent === "0"){ 
             screen.textContent = "";//to remove the zero from the screen 
             screen.textContent += number.value//then concatenate the numbers together
+            displayValue = screen.textContent;
         }else{
-            screen.textContent += number.value
+            screen.textContent += number.value;
+            displayValue = screen.textContent;
         }
     });
 });
 
 const clear = document.querySelector(".clear")
-clear.addEventListener("click", () => screen.textContent = 0);
-
+clear.addEventListener("click", () => {
+    screen.textContent = 0;
+    displayValue = screen.textContent;
+    })
 const negative = document.querySelector(".negative")
-negative.addEventListener("click", () => screen.textContent = screen.textContent * -1);
+negative.addEventListener("click", () => {
+    screen.textContent = screen.textContent * -1;
+    displayValue = screen.textContent;
+        }
+    );
 
 const percentage = document.querySelector(".percentage")
-percentage.addEventListener("click", () => screen.textContent = screen.textContent / 100);
+percentage.addEventListener("click", () => {
+    screen.textContent = screen.textContent / 100;
+    displayValue = screen.textContent;
+        }
+    );
 
 const decimalPoint = document.querySelector(".decimalPoint")
 decimalPoint.addEventListener("click", () => {
     const nums = Array.from(screen.textContent);
     if(!nums.includes(".")){
-        screen.textContent += "."
+        screen.textContent += ".";
+        displayValue = screen.textContent;
     }
 });

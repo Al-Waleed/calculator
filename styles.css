@@ -1,3 +1,16 @@
 * {
     font-family: 'Courier New', Courier, monospace;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+}
+.container {
+    height: 476px;
+    width: 304px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

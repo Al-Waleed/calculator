@@ -50,3 +50,11 @@ negative.addEventListener("click", () => screen.textContent = screen.textContent
 
 const percentage = document.querySelector(".percentage")
 percentage.addEventListener("click", () => screen.textContent = screen.textContent / 100);
+
+const decimalPoint = document.querySelector(".decimalPoint")
+decimalPoint.addEventListener("click", () => {
+    const nums = Array.from(screen.textContent);
+    if(!nums.includes(".")){
+        screen.textContent += "."
+    }
+});

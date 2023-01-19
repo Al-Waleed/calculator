@@ -50,3 +50,8 @@ button {
 .grey {
     background-color: rgba(160, 160, 160);
 }
+
+.zero {
+    width: 138px;
+    border-radius: 32px;
+}

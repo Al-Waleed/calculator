@@ -18,3 +18,16 @@ function percentage (a){
     return a / 100;
 }
 
+function operate(a, b, c){
+    if(c === "+"){
+        return add(a, b);
+    }else if (c === "-"){
+        return subtract(a, b);
+    }else if (c === "*"){
+        return multiply(a, b);
+    }else if (c === "/"){
+        return divide(a, b);
+    }
+}
+
+

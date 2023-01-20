@@ -45,7 +45,14 @@ button {
 .orange {
     background-color: rgb(246,154,45);
     
-} 
+}
+
+.orange:focus {
+    color: rgb(246,154,45);
+    background-color: rgb(255, 255, 255);
+
+
+}
 
 .grey {
     background-color: rgba(160, 160, 160);

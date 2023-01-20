@@ -1,5 +1,5 @@
 function add (a, b){
-    return a + b;
+    return parseFloat(a) + parseFloat(b);
 }
 
 function subtract (a, b){
@@ -27,7 +27,7 @@ function operate(a, b, c){
     }
 }
 
-let displayValue;
+let displayValue = "";
 let chosenOperator;
 let firstValue;
 let secondValue;
@@ -37,7 +37,7 @@ const numbers = document.querySelectorAll(".numbers");
 let sum = "";
 Array.from(numbers).forEach(number => {// make an array from the number buttons
     number.addEventListener("click", () => {//add a click event to all the buttons from the array
-        if(screen.textContent === "0"){ 
+        if(displayValue === "" || displayValue === "0"){// remove >>if(screen.textContent === "0"){ 
             screen.textContent = "";//to remove the zero from the screen 
             screen.textContent += number.value//then concatenate the numbers together
             displayValue = screen.textContent;
@@ -52,7 +52,7 @@ const clear = document.querySelector(".clear")
 clear.addEventListener("click", () => {
     screen.textContent = 0;
     displayValue = screen.textContent;
-    displayValue = undefined;
+    displayValue = "";
     chosenOperator = undefined;
     firstValue = undefined;
     secondValue = undefined;
@@ -66,15 +66,25 @@ negative.addEventListener("click", () => {
 
 const percentage = document.querySelector(".percentage")
 percentage.addEventListener("click", () => {
-    screen.textContent = screen.textContent / 100;
-    displayValue = screen.textContent;
+    if(screen.textContent == 0){
+        return
+    }else {
+
+        screen.textContent = screen.textContent / 100;
+        displayValue = screen.textContent;
+    }
         }
     );
 
 const decimalPoint = document.querySelector(".decimalPoint")
 decimalPoint.addEventListener("click", () => {
     const nums = Array.from(screen.textContent);
-    if(!nums.includes(".")){
+    if(displayValue === ""){
+        screen.textContent = "0";
+        screen.textContent += ".";
+        displayValue = screen.textContent;
+
+    }else if(!nums.includes(".")){
         screen.textContent += ".";
         displayValue = screen.textContent;
     }
@@ -83,18 +93,27 @@ decimalPoint.addEventListener("click", () => {
 const operators = document.querySelectorAll(".operators");
 Array.from(operators).forEach(operation =>{
     operation.addEventListener("click", ()=> {
-        if(firstValue === undefined){
-            firstValue = displayValue;
-            chosenOperator = operation.textContent;
-            screen.textContent = 0;
+        if(displayValue === screen.textContent && firstValue !== undefined){//to make the calculation if pressed again to chain a 3rd number
+            secondValue = displayValue;
+            screen.textContent = operate(firstValue,secondValue,chosenOperator);
+            firstValue = operate(firstValue,secondValue,chosenOperator);
             displayValue = "";
         }
-
+        firstValue = screen.textContent;
+        chosenOperator = operation.textContent;
+        displayValue = "";
     })
 });
 
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => {
-    secondValue = displayValue;
-    screen.textContent = operate(firstValue,secondValue,chosenOperator);
+    if(firstValue == undefined){
+        firstValue = screen.textContent;
+    }else{
+
+        secondValue = displayValue;
+        screen.textContent = operate(firstValue,secondValue,chosenOperator);
+        firstValue = operate(firstValue,secondValue,chosenOperator);
+        displayValue = "";
+    }
 })

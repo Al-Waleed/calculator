@@ -107,13 +107,18 @@ Array.from(operators).forEach(operation =>{
 
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => {
-    if(firstValue == undefined){
-        firstValue = screen.textContent;
-    }else{
+    if(firstValue != undefined && displayValue == 0){
+        screen.textContent = "bla habal"
+    }else {
 
-        secondValue = displayValue;
-        screen.textContent = operate(firstValue,secondValue,chosenOperator);
-        firstValue = operate(firstValue,secondValue,chosenOperator);
-        displayValue = "";
+        if(firstValue == undefined){
+            firstValue = screen.textContent;
+        }else{
+            
+            secondValue = displayValue;
+            screen.textContent = operate(firstValue,secondValue,chosenOperator);
+            firstValue = operate(firstValue,secondValue,chosenOperator);
+            displayValue = "";
+        }
     }
 })
